@@ -125,7 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+#write static_root and staticfiles_dırs before deploy to heroku and type to console 'python3 manage.py collectstatic --noinput'&'heroku config:set DISABLE_COLLECT=1' after u can delete it.
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
