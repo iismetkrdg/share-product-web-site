@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-8ihgn8#ophhrn!z9kauqc^)c@s4ju(jo&&*)#y6@+qa$gfgk(7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://kirazpazari.herokuapp.com/']
+ALLOWED_HOSTS = ['https://kirazpazari.herokuapp.com']
 
 
 
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'kiraz.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME' : os.environ.get('DB_NAME'),
+        'HOST' : os.environ.get('DB_HOST'),
+        'PORT' : 5432,
+        'USER' : os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
 
@@ -109,10 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr-tr'
 
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Europe/Istanbul'
 USE_I18N = True
 
 USE_TZ = True
@@ -123,7 +126,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(BASE_DIR,'static'),
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
